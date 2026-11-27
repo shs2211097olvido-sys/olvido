@@ -1,0 +1,45 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "Nica Olvido Portfolio" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+
+  <body class="bg-white text-slate-900 text-center p-6 dark:bg-slate-950 dark:text-white">
+    <slot name="header" />
+
+    <button id="toggle" class="mt-4 rounded-lg bg-slate-800 px-5 py-2 text-white">
+      Toggle Mode
+    </button>
+
+    <nav class="my-8 flex justify-center gap-6">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <slot />
+
+    <footer class="mt-8 text-sm text-gray-500">
+      © 2026 Nica Olvido
+    </footer>
+
+    <script>
+      document.getElementById("toggle")?.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+    </script>
+  </body>
+</html>
